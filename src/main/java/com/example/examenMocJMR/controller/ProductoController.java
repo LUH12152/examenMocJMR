@@ -23,6 +23,7 @@ public class ProductoController {
 
     @DeleteMapping(value = "/producto/{productoId}")
     public void deleteProducto(@PathVariable Long productoId) {
+        productoService.eliminarProductoById(productoId);
     }
 
     @PutMapping(value = "/producto/{productoId}")
@@ -49,7 +50,7 @@ public class ProductoController {
         if(precio==0.0 && !categoria.equals("")){
             return this.productoService.findByCategoria(categoria);
         }else{
-            return null;
+            return this.productoService.findAllProductos();
         }
     }
 
