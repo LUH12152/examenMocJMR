@@ -43,7 +43,7 @@ agent any
                            """
         }
         post{
-            succes{
+            success{
                    bat """
                            mkdir versiones
                            copy target\\*%VERSION_BACK%.jar versiones\\
