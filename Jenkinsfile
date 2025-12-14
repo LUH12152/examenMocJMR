@@ -32,5 +32,24 @@ agent any
                 bat "mvn package"
             }
        }
+       stage("Move jar"){
+        steps{
+            bat 'echo "Eliminando directorio de versiones"'
+
+            bat """
+                    if [-d versiones]; then
+                    rm -rj versiones
+                    fi
+                           """
+        }
+        post{
+            succes{
+                   bat """
+                           mkdir versiones
+                           copy target\\*%VERSION_BACK%.jar versiones\\
+                       """
+            }
+        }
+       }
     }
 }
