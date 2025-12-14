@@ -37,9 +37,9 @@ agent any
             bat 'echo "Eliminando directorio de versiones"'
 
             bat """
-                    if [ -d versiones ]; then
-                    rm -rf versiones
-                    fi
+                    if exist versiones (
+                                    rmdir /s /q versiones
+                                )
                            """
         }
         post{
